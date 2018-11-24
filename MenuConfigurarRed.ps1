@@ -1,4 +1,4 @@
-﻿#Practica configuracion de red:
+#Menu de configuracion de red:
 #Definicion de funciones:
 function get-menu
 {
@@ -39,7 +39,7 @@ function ip-dhcp
 }
 
 function Restaurar-red {
-    #Añadido en caso de fallo para restaurar:
+    #Añadido pra restaurar la red en caso de fallo o por seguridad:
     gip -InterfaceIndex $interface |Select-Object InterfaceAlias >inter.tmp
     cat .\inter.tmp -Last 3 >inter2.tmp
     $nombre = cat .\inter2.tmp -First 1
@@ -61,7 +61,7 @@ function get-interface
 
 
 
-#Bucle de repeticion:
+#Bucle de repeticion para el menu:
 do{
     Get-menu
     $intro = Read-Host "Pulsa intro para continuar"
