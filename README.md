@@ -5,7 +5,7 @@
  * Los Scripts se encuentran dentro de la carpeta Script.
 
 ## Contenido / Indice
-1. Configuración de la Red con un menu. ConfiguracionRedManu.ps1
+1. Configuración de la Red con un menu. MenuConfigurarRed.ps1
     * Es un script para la configuración de la red automaticamente con un menú, dentro del script esta explicada cada sentencia con   comentarios. 
  
 
