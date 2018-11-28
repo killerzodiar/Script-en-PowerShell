@@ -1,4 +1,6 @@
 #Menu de configuracion de red:
+#Las funciones se establecen al comienzo de cada Script para que sean precargadas antes de usarlas.
+#Read-Host se utiliza para pedir datos por pantalla u el Write-Host para mostrar texto en pantalla.
 #Definicion de funciones:
 function get-menu
 {
