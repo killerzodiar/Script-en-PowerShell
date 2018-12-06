@@ -42,7 +42,7 @@ document.getElementById("menuclick").classList.toggle("mostrar")}
 	<i class="fa fa-align-justify"></i></div>
 	<ul id="menuclick" class="menuclick">
 		<li><a href="index.html">Inicio</a></li>
-		<li><a href="https://github.com/killerzodiar/Script-en-PowerShell" target="_blank">Descargar</a></li>
+		<li><a href="https://github.com/killerzodiar/Script-en-PowerShell" target="_blank">Ir a Github</a></li>
 		<li>
 			<div class="mostrar" onclick="mostrarMenu()">
 			<i class="fa fa-close"></i></div>
@@ -55,7 +55,7 @@ document.getElementById("menuclick").classList.toggle("mostrar")}
 	
 	<ul class="menu">
 		<li><a href="index.html">Inicio</a></li>
-		<li><a href="https://github.com/killerzodiar/Script-en-PowerShell" target="_blank">Descargar</a></li>
+		<li><a href="https://github.com/killerzodiar/Script-en-PowerShell" target="_blank">Ir a Github</a></li>
 		<li>
 	</ul>
 	</nav>
@@ -69,7 +69,7 @@ document.getElementById("menuclick").classList.toggle("mostrar")}
 	<p>
 		Tenemos definida una funcion(Las funciones siempre se añaden al principio de cada script para que sean precargadas) <strong>Restaurar-Red</strong>, con el comando <strong>gip -InterfaceIndex $interface |Select-Object InterfaceAlias >inter.tmp</strong> mandamos a un archivo el nombre del interfaz de red que hemos seleccionado en los comandos anteriores, de ese archivo realizamos un cat de la posicion 4 para quedarnos solo con el nombre ya que el anterior tenia la cabecera (interfacealias), cuando ya tenemos solo el nombre lo metemos en la variable <strong>$nombre</strong>, en esta variable almacena el nombre de la interface, pero quedan unos espacios en blanco después del último caracter por lo que usamos <strong> $nombre = $nombre.Trim()</strong>, y ya quedaria el nombre perfectamente guardado en la variable. Por último usamos <strong>Restart-NetAdapter -Name "$nombre"</strong>
 	</p>
-	<p>Para ir al repositorio de Github hacer click en el apartador de descargar en el menu de inicio</p>
+	<p>Para ir al repositorio de Github hacer click en el apartador de "Ir a Github" en el menu de inicio</p>
 	<a href="#rest">Pulsar para ir a la linea del script</a>
 	
 	<br><br><br><br>
