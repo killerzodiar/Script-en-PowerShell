@@ -1,0 +1,59 @@
+#corp img {display:block; margin:auto; width:35%; height:300px; border-radius:10px; box-shadow: 0px 5px 5px #000;}
+#content a {color:#09D4FF;}
+
+#site_content h1 {color:white;}
+#site_content h2 {color:#F67400;}
+#site_content h3 {font-style:italic;}
+
+#site_content {color:#AAA;}
+
+/*Tablas*/
+
+table {border-collapse: collapse; width: 100%;}
+th, td {text-align: left; padding: 8px;}
+tr:nth-child(even){background-color: #9A9A9A}
+th {background-color: #2800A4; color: white;}
+
+/*Video*/
+#video1 {width:200px;}
+#video2 {width:200px;}
+#video3 {width:200px;}
+#video4 {width:200px;}
+
+/*Formulario*/
+label {
+    display:block;
+    margin-top:20px;
+    letter-spacing:0px;
+}
+.formulario { display:block; margin:0 auto; width:510px; color: #666666; font-family:Arial;}
+form { margin:20px;}
+input, textarea { width:380px; height:27px; background: #C1C1C1 ; border:2px solid #666666; padding:10px; margin-top:5px; font-size:12px; color:#000000;} 
+textarea { height:150px;}
+ 
+#submit {
+    width:85px;
+    height:35px;
+    margin-top:20px;
+    cursor:pointer;
+	border-radius:5px;
+	color:#4F4F4F;
+}
+
+
+
+
+
+
+
+
+
+	  <br>
+		<a href="http://jigsaw.w3.org/css-validator/check/referer">
+		<img style="border:0;width:88px;height:31px"
+        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+        alt="¡CSS Válido!" />
+		</a>
+	    <img style="border:0;width:88px;height:31px"
+        src="images/vhtml.jpg"
+        alt="html" />

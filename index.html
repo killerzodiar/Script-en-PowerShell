@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="es-ES">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Estudio de fotogrfía" />
+		<meta name="keywords" content="fotos, bodas, bautizos, comuniones" />
+		<link rel="icon" type="image/png" href="images/favicon.png" />
+		<title>Script PowerShell</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"> 
+<script>
+$(document).ready(function(){
+    $("#cerrar").click(function(){
+        $(this).hide();
+    });
+});
+function mostrarMenu() {
+document.getElementById("menuclick").classList.toggle("mostrar")} 
+
+</script>		
+	</head>
+<body>
+<div class="skipnav"><a href="#contenedor">Skip to main content</a> </div>  
+	<header>
+		<div class="banner">
+			<img src="images/foto1.jpeg" alt="foto1" />
+		</div>
+		<div class="logo" >
+		
+		</div>
+				<div class="cookies" id="cerrar">
+		<p>Solicitamos su permiso para obtener datos estadísticos de su navegación en esta web, en cumplimiento del Real Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el uso de cookies.</p>
+		</div>
+	</header>
+ 
+	<nav>
+
+	<div class="mostrar" onclick="mostrarMenu()">
+	<i class="fa fa-align-justify"></i></div>
+	<ul id="menuclick" class="menuclick">
+		<li><a href="index.html">Inicio</a></li>
+		<li><a href="https://github.com/killerzodiar/Script-en-PowerShell" target="_blank">Descargar</a></li>
+		<li>
+			<div class="mostrar" onclick="mostrarMenu()">
+			<i class="fa fa-close"></i></div>
+		
+		</li>
+	</ul>
+	
+	
+	
+	
+	<ul class="menu">
+		<li><a href="index.html">Inicio</a></li>
+		<li><a href="https://github.com/killerzodiar/Script-en-PowerShell" target="_blank">Descargar</a></li>
+		<li>
+	</ul>
+	</nav>
+
+
+	<section id="contenedor" class="section_servi">
+        <h1>Script en PowerShell</h1>
+	
+
+	<p>En esta página mostramos un ejemplo de Script creado en PowerShell ISE, en el cuál configuramos la red tanto en modo estático como dinámico. Con la variable de restaurar la Red automáticamente la cuál explicaremos acontinuación. Tenemos varias funciones pero nos centraremos en la parte de restaurar red que es la variante que hemos añadido.</p><br>
+	<p>
+		Tenemos definida una funcion(Las funciones siempre se añaden al principio de cada script para que sean precargadas) <strong>Restaurar-Red</strong>, con el comando <strong>gip -InterfaceIndex $interface |Select-Object InterfaceAlias >inter.tmp</strong> mandamos a un archivo el nombre del interfaz de red que hemos seleccionado en los comandos anteriores, de ese archivo realizamos un cat de la posicion 4 para quedarnos solo con el nombre ya que el anterior tenia la cabecera (interfacealias), cuando ya tenemos solo el nombre lo metemos en la variable <strong>$nombre</strong>, en esta variable almacena el nombre de la interface, pero quedan unos espacios en blanco después del último caracter por lo que usamos <strong> $nombre = $nombre.Trim()</strong>, y ya quedaria el nombre perfectamente guardado en la variable. Por último usamos <strong>Restart-NetAdapter -Name "$nombre"</strong>
+	</p>
+	<p>Para ir al repositorio de Github hacer click en el apartador de descargar en el menu de inicio</p>
+	<a href="#rest">Pulsar para ir a la linea del script</a>
+	
+	<br><br><br><br>
+
+
+
+<div class="script">
+
+<p>
+#Menu de configuracion de red:<br>
+#Las funciones se establecen al comienzo de cada Script para que sean precargadas antes de usarlas.<br>
+#Read-Host se utiliza para pedir datos por pantalla u el Write-Host para mostrar texto en pantalla.<br>
+#Definicion de funciones:<br>
+function get-menu<br>
+{<br>
+  $respuesta = Read-Host "`n` Elige una opcion `n` 1: Obtener informacion de los adaptadores `n` 2: Configurar ip estatica `n` 3: Configurar ip dinamica `n` 4: Salir `n` Opcion "<br>
+switch ($respuesta){<br>
+    '1' {Gip}<br>
+    '2' {ip-fija}<br>
+    '3' {ip-dhcp}<br>
+    '4' {<br>
+    Clear-Host<br>
+    Write-Host "adios"<br>
+      exit}<br>
+    default {Write-Host "Opcion no valida" }}  <br>
+}<br>
+<br>
+function ip-fija<br>
+{<br>
+   get-interface<br>
+   #Introducimos los nuevos datos:<br>
+   $ip = Read-Host "Dime la ip que vas a introducir"<br>
+   $longitud = Read-Host "Longitud de la mascara"<br>
+   $gateway = Read-Host "Dime la puerta de enlace"<br>
+   $dns1 = Read-Host "Dime el primer dns que vas a introducir"<br>
+   $dns2 = Read-Host "Dime el segundo dns que vas a introducir"<br>
+   #Establecemos los nuevos datos introducidos:<br>
+   New-NetIPAddress -InterfaceIndex $interface -IPAddress $ip -PrefixLength $longitud -DefaultGateway $gateway<br>
+   Set-DnsClientServerAddress -InterfaceIndex $interface -ServerAddresses ("$dns1","$dns2")<br>
+   Restaurar-red<br>
+}<br>
+<br>
+function ip-dhcp<br>
+{   <br>
+    get-interface<br>
+   #Establecemos los nuevos datos introducidos:  <br>
+    Set-NetIPInterface –InterfaceIndex $interface –Dhcp enable<br>
+    Set-DnsClientServerAddress –InterfaceIndex $interface -ResetServerAddresses<br>
+    Restaurar-red<br>
+}<br>
+<br>
+<strong id="rest">
+function Restaurar-red {<br>
+    #Añadido en caso de fallo para restaurar los adaptadores:<br>
+    gip -InterfaceIndex $interface |Select-Object InterfaceAlias >inter.tmp<br>
+    cat .\inter.tmp -Last 3 >inter2.tmp<br>
+    $nombre = cat .\inter2.tmp -First 1<br>
+    Remove-Item -Confirm:$false inter.tmp<br>
+    Remove-Item -Confirm:$false inter2.tmp<br>
+    $nombre = $nombre.Trim() #Trim borra los espacios en blanco restantes<br>
+    Restart-NetAdapter -Name "$nombre"<br>
+<br>
+}<br>
+</strong>
+<br>
+function get-interface<br>
+{<br>
+    $script:interface = Read-Host "Dime el indexf de la interfaz que vas a utilizar para dhcp" <br>
+    #Añadimos $script:"nombre de la variable" para definirla a nuivel del script ya que si no se borra al termianr la funcion<br>
+    #Borramos los datos anteriores:<br>
+    Remove-NetIPAddress -InterfaceIndex $interface -Confirm:$false<br>
+	Remove-NetRoute -InterfaceIndex $interface -Confirm:$false<br>
+}<br>
+<br>
+<br>
+
+#Bucle de repeticion para el menu:<br>
+do{<br>
+    Get-menu<br>
+    $intro = Read-Host "Pulsa intro para continuar"<br>
+}while ($true)<br>
+</p>
+</div>
+
+</section> 
+
+	
+
+
+	<footer class="pie">
+	  <i class="fa fa-twr"></i>
+	</footer>
+<div class="validacion">
+		<p>
+		<a href="http://jigsaw.w3.org/css-validator/check/referer">
+		<img style="border:0;width:88px;height:31px"
+        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+        alt="¡CSS Válido!" />
+		</a>
+	    <img style="border:0;width:88px;height:31px"
+        src="images/vhtml.jpg"
+        alt="html" />
+		Create by: Mikel Gomez - Jose Lora - Jose Manuel Martinez
+		<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Este obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional</a>.
+		</p>
+</div>
+</body>
+</html> 

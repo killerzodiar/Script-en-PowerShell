@@ -1,0 +1,121 @@
+2/* General*/
+body {font-family: 'Dosis', sans-serif; max-width:1920px; margin:0 auto; width: 90%; background: url(../images/patron.png) repeat}
+h1,h2,h3 {font-family:"Arial Narrow", sans-serif;}
+
+
+/*Header*/
+
+header {position: relative;}
+.banner img{width:100%; height:250px;border-radius:10px; box-shadow: 0px 5px 5px #000;}
+.logo {position: absolute;top:20%;width: 100%; text-align: center}
+.menuclick{display: none}
+.mostrar{display: none}
+
+
+/*Nav*/
+nav ul {list-style:none; padding:0; margin:0;width:100%; overflow: auto;background: linear-gradient(#d2ccca,grey); border-radius:10px; margin-bottom:10px; box-shadow:0px 5px 5px #000;}
+nav ul li {float:left;box-sizing: border-box}
+nav ul li a {font-family: 'Gloria Hallelujah', cursive;padding:.8em; display:block; text-decoration:none; color:black;}
+nav ul li a:hover {color:white;}
+	
+
+	
+/*Site-content*/
+
+/*** inicio ***/
+.contenedor{display: flex; justify-content: center;}
+.contenedor h1{text-align:center}
+.izquierda, .section, .derecha {box-shadow:0px 5px 5px #000;padding: 10px ;border-radius:7px; background: #d2ccca;width:33%; text-align:justify;box-sizing: border-box; margin: 30px}
+.izquierda:hover, .section:hover, .derecha:hover {padding: 8px;}
+.principal img {width:100px; height:100px; border-radius:10px; box-shadow: 0px 5px 5px #000;}
+
+/*Avatares*/
+.avatar img{height: 100px; width: 100px; margin-left: 35%}
+.fotoav img {width:100px; height: 100px;}
+/*Fotografos */
+.fotoav{text-align: center}
+
+/*** servicios ***/
+.section_servi{box-shadow:0px 5px 5px #000;border-radius: 7px;background: #d2ccca;width:100%; box-sizing: border-box; padding: 10px; margin-bottom:20px;margin-top:20px}
+
+/*Formulario*/
+.formulario{display: flex;justify-content: center;}
+.Tcontact h1{text-align: center}
+label {display:block;margin-top:20px;letter-spacing:0px;}
+form { margin:20px;}
+input, textarea { width:380px; height:27px; background: #C1C1C1 ; border:2px solid #666666; padding:10px; margin-top:5px; font-size:12px; color:#000000;} 
+textarea { height:150px;}
+ 
+.submit {width:85px;height:35px;margin-top:20px;cursor:pointer;border-radius:5px;color:#4F4F4F;}
+
+/*Fotografia*/
+.fotografia {display:flex; padding: 0 4px;}
+.columnas {flex: 25%;max-width: 25%;padding: 0 4px;}
+.columnas img {margin-top: 8px;vertical-align: middle;box-shadow: 0px 5px 5px #000;}
+.fotografia img:hover {transform:scale(1.25);}
+
+/*Tablas*/
+table {width: 400px;}
+th, td { padding: 8px;}
+tr:nth-child(even){background-color: #bdb7b6}
+th {background-color:#9A9A9A; color: white;}
+
+
+/*Footer*/
+
+.pie {margin-bottom: 10px;clear:both; background: linear-gradient(#d2ccca,grey); border-radius:10px; padding:5px 0px; box-shadow:0px 5px 5px #000;color: black; font-weight:bold; text-align:center}
+
+.fa-twitter, .fa-facebook-square, .fa-youtube, .fa-google, .fa-snapchat {border-radius: 100%; border: 2px solid black;  padding: 5px; margin-right: 10px}
+.fa-twitter:hover, .fa-facebook-square:hover, .fa-youtube:hover, .fa-google:hover, .fa-snapchat:hover  {color: white; border-color:white}
+
+/*validacion*/
+.validacion p{text-align: center }
+			
+
+/*Cokies*/
+
+.cookies {position:fixed;left:0px;right:0px;bottom:0px;padding-bottom:20px;width:100%;text-align:center;min-height:40px;background-color: rgba(0, 0, 0, 0.5);color:#fff;}
+
+.script {
+	border: 1px solid black;
+	box-shadow: 0px 5px 5px #000;
+	border-radius: 10px;
+	padding: 5px;
+	background-color: white;
+}
+
+/**Diseño Tablet**/
+@media screen and (max-width: 768px){
+		.contenedor { flex-wrap: wrap; }
+		.izquierda {width: 45%; margin: 10px 10px 10px 0px}
+		.section {width: 45%; margin: 10px 0px 10px 10px}
+		.derecha {width: 70%}
+		.fotografia{flex-wrap: wrap}
+		.columnas { flex: 45%; max-width: 50%}
+		input, textarea{width: 200px;}
+		
+}
+
+/*Diseño para moviles*/
+
+@media screen and (max-width: 525px){
+		table{font-size: 10px; width: 100%;}
+		.menuclick{position: fixed; top:0; left: 0;}
+		 nav {position: sticky; top: 0;margin-top: 5px ;margin-bottom: 5px;clear:both; background: linear-gradient(#d2ccca,grey); border-radius:10px; padding:5px 0px; box-shadow:0px 5px 5px #000;color: black; font-weight:bold; text-align:center}
+		.menu {display:none}
+		.mostrar{display: inline; }
+		.logo {top: 30%}
+		.logo img{max-width: 200px;}
+		.contenedor {flex-direction: column;}
+		.izquierda, .section, .derecha{width: 100%; margin: 10px 0px 10px 0px}
+		.fotografia {display: inline}
+		.columnas {max-width: 100%}
+		.video1{width: 100%;}
+
+}
+	
+	
+	
+	
+	
+	
